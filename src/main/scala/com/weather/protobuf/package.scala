@@ -51,12 +51,12 @@ package object protobuf extends AutoPlugin {
 object GenProtoBuf {
   def apply(sources: Seq[File], genServerCode: Boolean, genClientCode: Boolean): Seq[File] = {
     val caseClasses=sources.map{
-      file => parseCaseClassTransformer.convertToLabeledGeneric(file)
+      file => CaseClassTransformer.convertToLabeledGeneric(file)
     }
     //todo Generate protobuf files here.
     val baseGeneratedDir= baseDirectory.value.getAbsolutePath+java.io.File.pathSeparator+"src"+java.io.File.pathSeparator+"generated"+java.io.File.pathSeparator+"protobuf"
     caseClasses.map{ it =>
-      val genFile=new File(baseGeneratedDir,it)
+      val genFile={}//new File(baseGeneratedDir,it)
     }
     Seq.empty[File]
   }
